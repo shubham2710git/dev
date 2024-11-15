@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganttify - Goals and Features</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+/* General reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #1e1f1f;
+  line-height: 1.6;
+}
+
+/* Navbar styles */
+.navbar {
+    width: 100%;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.navbar-links a {
+  margin: 0 20px;
+  color: #555;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar-links a:hover {
+  color: #000;
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar-buttons .btn-signin,
+.navbar-buttons .btn-get-started {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
+.left-buttons {
+  display: flex;
+  gap: 10px;
+ position: absolute;
+ top: 50%;
+ left: 7%;
+}
+
+.left-buttons .btn-signin,
+.left-buttons .btn-get-started {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-signin {
+  background-color: transparent;
+  color: #333;
+  border: 2px solid #333;
+}
+
+.btn-get-started {
+  background-color: #333;
+  color: #fff;
+  border: none;
+}
+
+/* Main content styles */
+.main-content {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 60px 50px;
+}
+
+.content-left {
+  flex: 1;
+  margin-right: 40px;
+}
+
+.content-left .badge {
+  background-color: #444;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.content-left h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.content-left p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #fff;
+  color: #333;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #333;
+  border: 2px solid #333;
+}
+
+/* Content right section (cards) */
+.content-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  flex: 1;
+}
+
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.card.activity-card p {
+  font-size: 16px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.card.stats-card,
+.card.chart-card {
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+  }
+
+  .content-left {
+    /* padding-top: 30px; */
+    /* margin-top: 30px; */
+    margin-bottom: 20px;
+  }
+
+
+  .navbar-buttons {
+    margin-left: 250px;
+
+    margin-top: 10px;
+  }
+}
+
+
+    .trusted-text {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #aaa;
+    }
+
+    .trusted-logos {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .trusted-logos img {
+      width: 60px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: white;
+    }
+
+    /* Right Content Cards */
+    .content-right {
+    
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      color: #000;
+    }
+
+    /* .stats-card img, */
+    .chart-card img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .chart-card h3 {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 50px;
+      margin-right: 150px;
+    }
+
+    .activity-card p {
+      text-align: center;
+      font-size: 16px;
+      margin: 8px 0;
+    } 
+
+    /* Features Section */
+    .features-section {
+        /* width: 100%;
+        height: 50%; */
+      padding: 40px 50px;
+      color: #333;
+      background-color: #f8f9fa;
+      text-align: center;
+    }
+
+    .features-header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #e4e3e3;
+    }
+
+    .features-grid {
+        height: 60%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .feature-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 60px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+    }
+
+    .feature-card img {
+      width: 100%;
+      height: 40% !important;
+      /* height: auto; */
+      object-fit: cover;
+      border-radius: 10px;
+      /* margin-bottom: 20px; */
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-card h3 {
+      /* font-size: 18px; */
+      font-weight: 600;
+      
+    }
+
+    /* Footer */
+    .footer {
+        width: 100;
+      padding: 80px;
+      margin: 100px;
+      background-color: #f8f9fa;
+      text-align: center;
+      color: #333;
+    }
+
+    .footer p {
+      font-size: 16px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .footer-logos img {
+      width: 50px;
+      margin: 0 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar-logo">Ganttify</div>
+    <nav class="navbar-links">
+      <a href="#">Product</a>
+      <a href="#">Solutions</a>
+      <a href="#">Resources</a>
+      <a href="#">Company</a>
+      <a href="#">Pricing</a>
+    </nav>
+    <div class="navbar-buttons">
+      <button class="btn-signin">Sign In</button>
+      <button class="btn-get-started">Get Started</button>
+    </div>
+  </header>
+
+  <section class="main-content">
+    <div class="content-left">
+   
+      
+    </div>
+    <div class="content-right">
+      <div class="card stats-card"><img src="https://media.istockphoto.com/id/2148676092/photo/stock-market-data-and-investment-concept-financial-growth-graph-stock-market-candlestick-bars.webp?a=1&b=1&s=612x612&w=0&k=20&c=w7VK5DZf3rBAv2jnByqJvRg-kgKnOZX84WIEKaij-Jc=" alt=""></div>
+      <div class="card chart-card"><h3>Spending per month</h3><img src="https://media.istockphoto.com/id/1317720487/photo/stock-graph-screen-display.jpg?s=612x612&w=0&k=20&c=iDDLcKiQm9d9LAz4KqcmXg1daqKi2gMt2XnLoGFRH_4=" alt="Monthly Spending Chart"></div>
+      <div class="card activity-card"><p>📋 Users newly onboarded 2 days ago</p></div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <p>Goals and Reporting <br> </p>
+    <div class="features-header">
+      <p class="breadcrumb">Features</p>
+      <h1>Everything Your Team is Looking For</h1>
+      <p class="subtitle">Ganttify's exceptional flexibility can handle any type of work. And we never stop innovating.</p>
+      <div class="left-buttons">
+        <button class="btn-signin">Get Started</button>
+        <button class="btn-get-started">How it Works</button>
+      </div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1564038057903-1d48b852b412?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHRlY2huaWNhbHxlbnwwfHwwfHx8MA%3D%3D" alt="Project Management">
+        <h3>Project Management</h3>
+        <p>Manage your projects from start to finish. With all of your projects in Ganttify, you'll always know who's doing what, by when.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://media.istockphoto.com/id/1289758686/photo/agile-method.webp?a=1&b=1&s=612x612&w=0&k=20&c=_QcCLe6gQT1vhlUTZPLdA7c_oWUc9Q7XJAhURwsTT2k=" alt="Workflows and Automation">
+        <h3>Workflows and Automations</h3>
+        <p>Create more efficient processes so you can seamlessly manage projects across departments and get more done in less time.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://plus.unsplash.com/premium_photo-1679547202646-331fe6ce8a40?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHJlcG9ydGluZ3xlbnwwfHwwfHx8MA%3D%3D" alt="Goals and Reporting">
+        <h3>Goals and Reporting</h3>
+        <p>Connect your work to company-wide goals and monitor your progress with customizable dashboards and real-time reporting.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1564038057903-1d48b852b412?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHRlY2huaWNhbHxlbnwwfHwwfHx8MA%3D%3D" alt="Collaborations">
+        <h3>Collaborations</h3>
+        <p>Collaborate with other departments, teams, and stakeholders. Keep them in the loop by giving them a direct view of your work.</p>
+      </div>
+    </div>
+  </section>
+
+  </footer>
+  
+  <!-- Pricing Section -->
+  <div class="pricing-container">
+    <div class="header">
+      <p class="breadcrumb">Pricing</p>
+      <h1>Simple and Flexible <br> Pricing</h1>
+      <div class="toggle">
+        <button class="toggle-btn active">Monthly</button>
+        <button class="toggle-btn">Annually</button>
+      </div>
+    </div>
+    
+    <div class="pricing-plans">
+      <!-- Personal Plan -->
+      <div class="plan">
+        <h3>Personal</h3>
+        <p class="price">$29 <span>per month</span></p>
+        <p class="description">For individuals and small teams looking to manage their tasks</p>
+        <ul class="features">
+          <li>Unlimited contacts</li>
+          <li>Bulk emailing</li>
+          <li>AI Integration</li>
+          <li>View & share up to 3 years</li>
+          <li>Collaboration & permissions</li>
+        </ul>
+        <button class="start-btn">Get Started</button>
+      </div>
+
+      <!-- Pro Plan -->
+      <div class="plan highlighted">
+        <h3>Pro</h3>
+        <p class="price">$39 <span>per month</span></p>
+        <p class="description">For growing teams that need to track their projects' progress and hit deadlines</p>
+        <ul class="features">
+          <li>Email sequences</li>
+          <li>Send emails from multiple domains</li>
+          <li>Connect multiple email accounts</li>
+          <li>Fully adjustable sharing permissions</li>
+          <li>Migration services</li>
+        </ul>
+        <button class="start-btn">Get Started</button>
+      </div>
+
+      <!-- Custom Plan -->
+      <div class="plan">
+        <h5 id="beyond">Beyond limits</h5>
+        <h1 id="custom">Custom Plan</h1>
+        <p class="description">For companies that need to manage a portfolio of work and goals across departments</p>
+        <ul class="features">
+          <li>White glove onboarding</li>
+          <li>Custom billing</li>
+          <li>Dedicated slack channel</li>
+          <li>Dedicated point of contact</li>
+          <li>Unlimited reporting</li>
+        </ul>
+        <button class="start-btn">Get Started</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customer Testimonials Section -->
+  <section class="testimonials">
+    <div class="section-header">
+      <span class="tag">Customers</span>
+      <h1>See What Our Customers <br> Are Saying</h1>
+      <p>Here's what some of our customers say about our platform.</p>
+    </div>
+
+    <div class="testimonial-cards">
+      <div class="testimonial-card">
+        <div class="rating">
+          <span>⭐⭐⭐⭐⭐</span>
+          <span>4.8</span>
+        </div>
+        <p>“Gantify has revolutionized the way we manage our projects. Connecting tasks and workflows to our overall company goals has never been easier.”</p>
+        <div class="author">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmFjZXxlbnwwfHwwfHx8MA%3D%3D" alt="Charlotte Hanlin">
+          <div>
+            <h4>Charlotte Hanlin</h4>
+            <p>Co-Founder, Heroes Digital</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="rating">
+          <span>⭐⭐⭐⭐⭐</span>
+          <span>4.8</span>
+        </div>
+        
+        <p>“Using Gantify has streamlined our project management process. It's incredibly effective in aligning our daily tasks with the company's strategic goals.”</p>
+        <div class="author">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmFjZXxlbnwwfHwwfHx8MA%3D%3D" alt="Eleanor Pena">
+          <div>
+            <h4>Eleanor Pena</h4>
+            <p>Co-Founder, Heroes Digital</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="rating">
+          <span>⭐⭐⭐⭐⭐</span>
+          <span>4.8</span>
+        </div>
+        <p>“Gantify has provided us with a unified view of our projects. It connects our workflows directly to our business goals, making it easier to track progress.”</p>
+        <div class="author">
+          <img src="https://images.unsplash.com/photo-1468218457742-ee484fe2fe4c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGZhY2V8ZW58MHx8MHx8fDA%3D" alt="Guy Hawkins">
+          <div>
+            <h4>Guy Hawkins</h4>
+            <p>Co-Founder, Heroes Digital</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-cards">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+            <div class="rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span>4.9</span>
+            </div>
+            <p>“Gantify has revolutionized our project management. It's streamlined how we coordinate between teams, ensuring that all tasks align with our core business objectives.”</p>
+            <div class="author">
+                <img src="https://images.unsplash.com/photo-1509399693673-755307bfc4e1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGZhY2V8ZW58MHx8MHx8fDA%3D" alt="Sophia Lee">
+                <div>
+                    <h4>Sophia Lee</h4>
+                    <p>Project Manager, Innovate Tech</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+            <div class="rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span>4.8</span>
+            </div>
+            <p>“We've seen a remarkable improvement in team collaboration and communication since we started using Gantify. It makes managing deadlines and milestones so much easier.”</p>
+            <div class="author">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzF8fGZhY2V8ZW58MHx8MHx8fDA%3D" alt="Liam Scott">
+                <div>
+                    <h4>Liam Scott</h4>
+                    <p>CEO, Future Enterprises</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+            <div class="rating">
+                <span>⭐⭐⭐⭐⭐</span>
+                <span>4.9</span>
+            </div>
+            <p>“Using Gantify has improved our project visibility, allowing us to adjust our workflows in real-time. It has enhanced productivity and team accountability.”</p>
+            <div class="author">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzF8fGZhY2V8ZW58MHx8MHx8fDA%3D" alt="Ethan Davis">
+                <div>
+                    <h4>Ethan Davis</h4>
+                    <p>Operations Head, Techno World</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+  </section>
+   <div class="container">
+      <div class="contact-text">
+        <button class="contact-button">Contact</button>
+        <h1>Get in Touch with Us</h1>
+        <p>
+          Ganttify enables you to achieve clarity and significant results <br> on a
+          large scale by linking tasks and workflows to the <br> overarching 
+          objectives of the company.
+        </p>
+      </div>
+      <div class="form-container">
+        <form class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First name</label>
+              <input type="text" id="first-name" placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last name</label>
+              <input type="text" id="last-name" placeholder="Doe" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="johndoe@mail.co" />
+          </div>
+          <div class="form-group">
+            <label for="message">Problem Descriptions</label>
+            <textarea id="message" placeholder="Message"></textarea>
+          </div>
+          <button type="submit" class="submit-button">Send Message</button>
+        </form>
+      </div>
+    </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <!-- Logo and Social Icons -->
+      <div class="footer-top">
+        <div class="footer-logo">
+          <span class="logo-icon">🔷</span>
+          <span class="logo-text">Gantify</span>
+        </div>
+        <div class="social-icons">
+          <span><a href="https://www.instagram.com/" class="ri-instagram-fill"></a>   </span>
+          <span><a href="https://x.com/" class="ri-twitter-x-line"></a></span>
+          <span><a href="https://www.facebook.com/" class="ri-facebook-box-fill"></a></span>
+        </div>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Gantify</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Customer Success</a></li>
+            <li><a href="#">Templates</a></li>
+            <li><a href="#">Trust & Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="#">Project Management</a></li>
+            <li><a href="#">Goal Management</a></li>
+            <li><a href="#">Agile Management</a></li>
+            <li><a href="#">Task Management</a></li>
+            <li><a href="#">Productivity</a></li>
+            <li><a href="#">Work Management</a></li>
+            <li><a href="#">Project Planning</a></li>
+            <li><a href="#">To Do Lists</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>About Us</h4>
+          <ul>
+            <li><a href="#">Company</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">Customers</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Developers & API</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Status</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Helpful Links</h4>
+          <ul>
+            <li><a href="#">Legal Center</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Partnerships</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Country and Copyright -->
+      <div class="footer-bottom">
+        <div class="country-select">
+          <span>🌎 United States</span>
+        </div>
+        <p>© Gantify 2024. All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+</html>
